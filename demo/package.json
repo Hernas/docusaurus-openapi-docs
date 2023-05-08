@@ -1,6 +1,6 @@
 {
   "name": "demo",
-  "version": "0.0.0-beta.670",
+  "version": "0.0.0-beta.673",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
