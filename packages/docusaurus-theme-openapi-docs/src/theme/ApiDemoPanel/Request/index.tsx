@@ -84,11 +84,20 @@ function Request({ item }: { item: NonNullable<ApiItem> }) {
     header: [] as ParameterObject[],
     cookie: [] as ParameterObject[],
   };
+  const storage = createStorage("sessionStorage");
 
   item.parameters?.forEach(
     (param: { in: "path" | "query" | "header" | "cookie" }) => {
       const paramType = param.in;
       const paramsArray: ParameterObject[] = paramsObject[paramType];
+
+      try {
+        const persisted =
+          storage.getItem(paramStorageKey(paramType, param.name)) ?? undefined;
+        if (persisted) {
+          param.value = JSON.parse(persisted);
+        }
+      } catch {}
       paramsArray.push(param as ParameterObject);
     }
   );

@@ -81,7 +81,6 @@ export default function ApiItem(props: Props): JSX.Element {
     const content = api?.requestBody?.content ?? {};
     const contentTypeArray = Object.keys(content);
     const servers = api?.servers ?? [];
-    const storage = createStorage("sessionStorage");
     const params = {
       path: [] as ParameterObject[],
       query: [] as ParameterObject[],
@@ -97,14 +96,6 @@ export default function ApiItem(props: Props): JSX.Element {
         const paramType = param.in;
         const paramsArray: ParameterObject[] = params[paramType];
 
-        try {
-          const persisted =
-            storage.getItem(paramStorageKey(paramType, param.name)) ??
-            undefined;
-          if (persisted) {
-            param.value = JSON.parse(persisted);
-          }
-        } catch {}
         paramsArray.push(param as ParameterObject);
       }
     );
