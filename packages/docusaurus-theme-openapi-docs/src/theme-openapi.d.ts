@@ -233,7 +233,7 @@ declare module "@theme/ApiDemoPanel/persistanceMiddleware" {
 }
 
 declare module "@theme/ApiDemoPanel/Request" {
-  import { ApiItem } from "docusaurus-plugin-openapi-docs/src/types";
+  import { ApiItem } from "@hernas/docusaurus-plugin-openapi-docs/src/types";
 
   export interface RequestProps {
     item: NonNullable<ApiItem>;
@@ -242,7 +242,7 @@ declare module "@theme/ApiDemoPanel/Request" {
 }
 
 declare module "@theme/ApiDemoPanel/Response" {
-  import { ApiItem } from "docusaurus-plugin-openapi-docs/src/types";
+  import { ApiItem } from "@hernas/docusaurus-plugin-openapi-docs/src/types";
 
   export interface ResponseProps {
     item: NonNullable<ApiItem>;

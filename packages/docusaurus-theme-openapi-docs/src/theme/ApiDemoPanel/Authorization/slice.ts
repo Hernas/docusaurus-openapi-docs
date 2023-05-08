@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  * ========================================================================== */
 
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { createStorage, hashArray } from "@theme/ApiDemoPanel/storage-utils";
 import {
   SecurityRequirementObject,
   SecuritySchemeObject,
-} from "docusaurus-plugin-openapi-docs/src/openapi/types";
+} from "@hernas/docusaurus-plugin-openapi-docs/src/openapi/types";
+import { ThemeConfig } from "@hernas/docusaurus-theme-openapi-docs/src/types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createStorage, hashArray } from "@theme/ApiDemoPanel/storage-utils";
 /* eslint-disable import/no-extraneous-dependencies*/
-import { ThemeConfig } from "docusaurus-theme-openapi-docs/src/types";
 
 import { getAuthDataKeys } from "./auth-types";
 

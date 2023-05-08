@@ -11,7 +11,7 @@ import { Body, Content } from "@theme/ApiDemoPanel/Body/slice";
 import {
   ParameterObject,
   ServerObject,
-} from "docusaurus-plugin-openapi-docs/src/openapi/types";
+} from "@hernas/docusaurus-plugin-openapi-docs/src/openapi/types";
 import cloneDeep from "lodash/cloneDeep";
 
 type Param = {

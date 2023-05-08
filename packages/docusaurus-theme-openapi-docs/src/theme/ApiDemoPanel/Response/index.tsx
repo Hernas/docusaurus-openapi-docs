@@ -9,13 +9,13 @@ import React from "react";
 
 import { usePrismTheme } from "@docusaurus/theme-common";
 import { useDoc } from "@docusaurus/theme-common/internal";
+import { ApiItem } from "@hernas/docusaurus-plugin-openapi-docs/src/types";
 import { Loading } from "@nextui-org/react";
 import ApiCodeBlock from "@theme/ApiDemoPanel/ApiCodeBlock";
 import { useTypedDispatch, useTypedSelector } from "@theme/ApiItem/hooks";
 import SchemaTabs from "@theme/SchemaTabs";
 import TabItem from "@theme/TabItem";
 import clsx from "clsx";
-import { ApiItem } from "docusaurus-plugin-openapi-docs/src/types";
 
 import { clearResponse, clearCode, clearHeaders } from "./slice";
 
