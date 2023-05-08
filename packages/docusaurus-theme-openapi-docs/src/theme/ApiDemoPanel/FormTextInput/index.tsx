@@ -42,7 +42,6 @@ function FormTextInput({
         <input
           {...register(paramName, {
             required: isRequired ? "This field is required" : false,
-            value: value
           })}
           className={clsx("openapi-demo__form-item-input", {
             error: showErrorMessage,
