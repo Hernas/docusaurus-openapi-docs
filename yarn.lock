@@ -1759,7 +1759,7 @@
     "@hapi/hoek" "^9.0.0"
 
 "@hernas/docusaurus-plugin-openapi-docs@^2.0.0-beta.3":
-  version "0.0.0-beta.662"
+  version "0.0.0-beta.665"
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^10.1.0"
     "@docusaurus/plugin-content-docs" ">=2.3.0 <2.5.0"
@@ -1780,7 +1780,7 @@
     xml-formatter "^2.6.1"
 
 "@hernas/docusaurus-theme-openapi-docs@^2.0.0-beta.3":
-  version "0.0.0-beta.662"
+  version "0.0.0-beta.665"
   dependencies:
     "@docusaurus/theme-common" ">=2.3.0 <2.5.0"
     "@hookform/error-message" "^2.0.1"
