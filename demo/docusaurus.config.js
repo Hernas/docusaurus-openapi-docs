@@ -203,7 +203,7 @@ const config = {
 
   plugins: [
     [
-      "docusaurus-plugin-openapi-docs",
+      "@hernas/docusaurus-plugin-openapi-docs",
       {
         id: "openapi",
         docsPluginId: "classic",
@@ -259,7 +259,7 @@ const config = {
       },
     ],
   ],
-  themes: ["docusaurus-theme-openapi-docs"],
+  themes: ["@hernas/docusaurus-theme-openapi-docs"],
   stylesheets: [
     {
       href: "https://use.fontawesome.com/releases/v5.11.0/css/all.css",

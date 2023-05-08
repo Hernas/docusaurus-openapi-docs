@@ -42,6 +42,7 @@ function FormTextInput({
         <input
           {...register(paramName, {
             required: isRequired ? "This field is required" : false,
+            value: value
           })}
           className={clsx("openapi-demo__form-item-input", {
             error: showErrorMessage,
@@ -49,7 +50,6 @@ function FormTextInput({
           type={password ? "password" : "text"}
           placeholder={placeholder}
           title={placeholder}
-          value={value}
           onChange={onChange}
           autoComplete="off"
         />
