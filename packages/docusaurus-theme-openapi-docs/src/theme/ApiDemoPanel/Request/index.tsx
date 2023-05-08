@@ -26,10 +26,10 @@ import {
   clearHeaders,
 } from "@theme/ApiDemoPanel/Response/slice";
 import Server from "@theme/ApiDemoPanel/Server";
+import { createStorage } from "@theme/ApiDemoPanel/storage-utils";
 import { useTypedDispatch, useTypedSelector } from "@theme/ApiItem/hooks";
 import { FormProvider, useForm } from "react-hook-form";
 
-import { createStorage } from "../storage-utils";
 import makeRequest from "./makeRequest";
 
 function Request({ item }: { item: NonNullable<ApiItem> }) {
