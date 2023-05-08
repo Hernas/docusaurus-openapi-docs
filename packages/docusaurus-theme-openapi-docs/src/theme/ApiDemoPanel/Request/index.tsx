@@ -18,6 +18,7 @@ import Body from "@theme/ApiDemoPanel/Body";
 import buildPostmanRequest from "@theme/ApiDemoPanel/buildPostmanRequest";
 import ContentType from "@theme/ApiDemoPanel/ContentType";
 import ParamOptions from "@theme/ApiDemoPanel/ParamOptions";
+import { paramStorageKey } from "@theme/ApiDemoPanel/ParamOptions/storageKey";
 import {
   setResponse,
   setCode,
@@ -87,7 +88,6 @@ function Request({ item }: { item: NonNullable<ApiItem> }) {
   };
   const storage = createStorage("sessionStorage");
 
-  console.log('item.parameters', item.parameters);
   item.parameters?.forEach(
     (param: { in: "path" | "query" | "header" | "cookie" }) => {
       const paramType = param.in;
@@ -100,8 +100,7 @@ function Request({ item }: { item: NonNullable<ApiItem> }) {
         if (persisted) {
           param.value = JSON.parse(persisted);
         }
-      } catch {}
-      console.log('param', param);
+      } catch(e) { console.error(e); }
       paramsArray.push(param as ParameterObject);
     }
   );
