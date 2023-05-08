@@ -87,18 +87,21 @@ function Request({ item }: { item: NonNullable<ApiItem> }) {
   };
   const storage = createStorage("sessionStorage");
 
+  console.log('item.parameters', item.parameters);
   item.parameters?.forEach(
     (param: { in: "path" | "query" | "header" | "cookie" }) => {
       const paramType = param.in;
       const paramsArray: ParameterObject[] = paramsObject[paramType];
 
       try {
+        console.log('cache', paramStorageKey(paramType, param.name));
         const persisted =
           storage.getItem(paramStorageKey(paramType, param.name)) ?? undefined;
         if (persisted) {
           param.value = JSON.parse(persisted);
         }
       } catch {}
+      console.log('param', param);
       paramsArray.push(param as ParameterObject);
     }
   );
