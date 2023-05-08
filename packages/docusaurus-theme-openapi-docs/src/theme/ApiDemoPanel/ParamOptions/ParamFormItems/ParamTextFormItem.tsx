@@ -22,6 +22,7 @@ export default function ParamTextFormItem({ param }: ParamProps) {
       isRequired={param.required}
       paramName={param.name}
       placeholder={param.description || param.name}
+      value={param.value}
       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
         dispatch(
           setParam({

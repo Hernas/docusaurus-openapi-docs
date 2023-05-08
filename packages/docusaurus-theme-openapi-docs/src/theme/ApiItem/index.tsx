@@ -28,6 +28,8 @@ import type {
 } from "docusaurus-theme-openapi-docs/src/types";
 import { Provider } from "react-redux";
 
+import { paramStorageKey } from "../ApiDemoPanel/ParamOptions/storageKey";
+import { createStorage } from "../ApiDemoPanel/storage-utils";
 import { createStoreWithoutState, createStoreWithState } from "./store";
 
 const { DocProvider } = require("@docusaurus/theme-common/internal");
@@ -79,6 +81,7 @@ export default function ApiItem(props: Props): JSX.Element {
     const content = api?.requestBody?.content ?? {};
     const contentTypeArray = Object.keys(content);
     const servers = api?.servers ?? [];
+    const storage = createStorage("sessionStorage");
     const params = {
       path: [] as ParameterObject[],
       query: [] as ParameterObject[],
@@ -86,9 +89,22 @@ export default function ApiItem(props: Props): JSX.Element {
       cookie: [] as ParameterObject[],
     };
     api?.parameters?.forEach(
-      (param: { in: "path" | "query" | "header" | "cookie" }) => {
+      (param: {
+        in: "path" | "query" | "header" | "cookie";
+        name: string;
+        value?: string | string[];
+      }) => {
         const paramType = param.in;
         const paramsArray: ParameterObject[] = params[paramType];
+
+        try {
+          const persisted =
+            storage.getItem(paramStorageKey(paramType, param.name)) ??
+            undefined;
+          if (persisted) {
+            param.value = JSON.parse(persisted);
+          }
+        } catch {}
         paramsArray.push(param as ParameterObject);
       }
     );

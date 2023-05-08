@@ -10,10 +10,12 @@ import {
   setAuthData,
   setSelectedAuth,
 } from "@theme/ApiDemoPanel/Authorization/slice";
+import { setParam } from "@theme/ApiDemoPanel/ParamOptions/slice";
 import { AppDispatch, RootState } from "@theme/ApiItem/store";
 /* eslint-disable import/no-extraneous-dependencies*/
 import { ThemeConfig } from "docusaurus-theme-openapi-docs/src/types";
 
+import { paramStorageKey } from "./ParamOptions/storageKey";
 import { createStorage, hashArray } from "./storage-utils";
 
 export function createPersistanceMiddleware(options: ThemeConfig["api"]) {
@@ -33,6 +35,13 @@ export function createPersistanceMiddleware(options: ThemeConfig["api"]) {
             storage.removeItem(key);
           }
         }
+      }
+      if (action.type === setParam.type) {
+        const { value, name } = action.payload;
+        storage.setItem(
+          paramStorageKey(action.payload.in, name),
+          JSON.stringify(value)
+        );
       }
 
       if (action.type === setSelectedAuth.type) {
