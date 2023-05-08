@@ -46,6 +46,7 @@ function FormTextInput({
           className={clsx("openapi-demo__form-item-input", {
             error: showErrorMessage,
           })}
+          value={value}
           type={password ? "password" : "text"}
           placeholder={placeholder}
           title={placeholder}

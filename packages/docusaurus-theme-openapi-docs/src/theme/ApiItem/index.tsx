@@ -88,7 +88,6 @@ export default function ApiItem(props: Props): JSX.Element {
       cookie: [] as ParameterObject[],
     };
     const storage = createStorage("sessionStorage");
-    console.log('api?.parameters', api?.parameters);
     api?.parameters?.forEach(
       (param: {
         in: "path" | "query" | "header" | "cookie";
