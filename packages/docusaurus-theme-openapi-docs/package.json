@@ -1,5 +1,5 @@
 {
-  "name": "docusaurus-theme-openapi-docs",
+  "name": "@hernas/docusaurus-theme-openapi-docs",
   "description": "OpenAPI theme for Docusaurus.",
   "version": "2.0.0-beta.3",
   "license": "MIT",
