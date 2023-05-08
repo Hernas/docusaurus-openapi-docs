@@ -94,7 +94,6 @@ function Request({ item }: { item: NonNullable<ApiItem> }) {
       const paramsArray: ParameterObject[] = paramsObject[paramType];
 
       try {
-        console.log('cache', paramStorageKey(paramType, param.name));
         const persisted =
           storage.getItem(paramStorageKey(paramType, param.name)) ?? undefined;
         if (persisted) {

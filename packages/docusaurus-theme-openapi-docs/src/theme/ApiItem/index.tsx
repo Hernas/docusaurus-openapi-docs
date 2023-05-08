@@ -87,6 +87,8 @@ export default function ApiItem(props: Props): JSX.Element {
       header: [] as ParameterObject[],
       cookie: [] as ParameterObject[],
     };
+    const storage = createStorage("sessionStorage");
+    console.log('api?.parameters', api?.parameters);
     api?.parameters?.forEach(
       (param: {
         in: "path" | "query" | "header" | "cookie";
@@ -96,6 +98,13 @@ export default function ApiItem(props: Props): JSX.Element {
         const paramType = param.in;
         const paramsArray: ParameterObject[] = params[paramType];
 
+        try {
+          const persisted =
+            storage.getItem(paramStorageKey(paramType, param.name)) ?? undefined;
+          if (persisted) {
+            param.value = JSON.parse(persisted);
+          }
+        } catch(e) { console.error(e); }
         paramsArray.push(param as ParameterObject);
       }
     );
