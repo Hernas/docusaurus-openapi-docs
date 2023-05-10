@@ -1759,7 +1759,7 @@
     "@hapi/hoek" "^9.0.0"
 
 "@hernas/docusaurus-plugin-openapi-docs@^2.0.0-beta.3":
-  version "0.0.0-beta.682"
+  version "0.0.0-beta.684"
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^10.1.0"
     "@docusaurus/plugin-content-docs" ">=2.3.0 <2.5.0"
@@ -1780,9 +1780,10 @@
     xml-formatter "^2.6.1"
 
 "@hernas/docusaurus-theme-openapi-docs@^2.0.0-beta.3":
-  version "0.0.0-beta.682"
+  version "0.0.0-beta.684"
   dependencies:
     "@docusaurus/theme-common" ">=2.3.0 <2.5.0"
+    "@hernas/docusaurus-plugin-openapi-docs" "^0.0.0-beta.684"
     "@hookform/error-message" "^2.0.1"
     "@nextui-org/react" "^1.0.0-beta.12"
     "@paloaltonetworks/postman-code-generators" "1.1.15-patch.2"
@@ -1791,7 +1792,6 @@
     clsx "^1.1.1"
     copy-text-to-clipboard "^3.1.0"
     crypto-js "^4.1.1"
-    docusaurus-plugin-openapi-docs "^2.0.0-beta.3"
     docusaurus-plugin-sass "^0.2.3"
     file-saver "^2.0.5"
     lodash "^4.17.20"
@@ -7334,29 +7334,6 @@ doctrine@^3.0.0:
   integrity sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==
   dependencies:
     esutils "^2.0.2"
-
-docusaurus-plugin-openapi-docs@^2.0.0-beta.3:
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/docusaurus-plugin-openapi-docs/-/docusaurus-plugin-openapi-docs-2.0.0-beta.3.tgz#bc76df78be5c46682b0c099b94b8f5e4e29950ae"
-  integrity sha512-6IQANCzbFL2WY6Vw+dCU9nqUxcyzlDs7lI5OsjR4KSO/CgRpCO20zVxKYrmd5oUGMZu+hTfjvf0VdvEordTaoQ==
-  dependencies:
-    "@apidevtools/json-schema-ref-parser" "^10.1.0"
-    "@docusaurus/plugin-content-docs" ">=2.3.0 <2.5.0"
-    "@docusaurus/utils" ">=2.3.0 <2.5.0"
-    "@docusaurus/utils-validation" ">=2.3.0 <2.5.0"
-    "@paloaltonetworks/openapi-to-postmanv2" "3.1.0-hotfix.1"
-    "@paloaltonetworks/postman-collection" "^4.1.0"
-    "@redocly/openapi-core" "^1.0.0-beta.125"
-    chalk "^4.1.2"
-    clsx "^1.1.1"
-    fs-extra "^9.0.1"
-    json-pointer "^0.6.2"
-    json-schema-merge-allof "^0.8.1"
-    lodash "^4.17.20"
-    mustache "^4.2.0"
-    slugify "^1.6.5"
-    swagger2openapi "^7.0.8"
-    xml-formatter "^2.6.1"
 
 docusaurus-plugin-sass@^0.2.3:
   version "0.2.3"
