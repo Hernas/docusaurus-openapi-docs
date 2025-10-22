@@ -32,6 +32,8 @@ import type {
 } from "docusaurus-theme-openapi-docs/src/types";
 import { ungzip } from "pako";
 import { Provider } from "react-redux";
+import { createStorage } from "@theme/ApiExplorer/storage-utils";
+import { paramStorageKey } from "@theme/ApiExplorer/ParamOptions/storageKey";
 
 import { createStoreWithoutState, createStoreWithState } from "./store";
 
@@ -117,10 +119,24 @@ export default function ApiItem(props: Props): JSX.Element {
       header: [] as ParameterObject[],
       cookie: [] as ParameterObject[],
     };
+    const storage = createStorage("sessionStorage");
+
     api?.parameters?.forEach(
-      (param: { in: "path" | "query" | "header" | "cookie" }) => {
+      (param: { 
+        in: "path" | "query" | "header" | "cookie",         
+        name: string;
+        value?: string | string[];
+      }) => {
         const paramType = param.in;
         const paramsArray: ParameterObject[] = params[paramType];
+        try {
+          const persisted =
+            storage.getItem(paramStorageKey(paramType, param.name)) ?? undefined;
+          if (persisted) {
+            param.value = JSON.parse(persisted);
+          }
+        } catch(e) { console.error(e); }
+
         paramsArray.push(param as ParameterObject);
       }
     );

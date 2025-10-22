@@ -7,25 +7,34 @@
 
 import { Middleware } from "@reduxjs/toolkit";
 import {
+  setParam
+} from "@theme/ApiExplorer/ParamOptions/slice";
+import {
   setAuthData,
-  setSelectedAuth,
+  setSelectedAuth
 } from "@theme/ApiExplorer/Authorization/slice";
 import { AppDispatch, RootState } from "@theme/ApiItem/store";
 /* eslint-disable import/no-extraneous-dependencies*/
 import { ThemeConfig } from "docusaurus-theme-openapi-docs/src/types";
+import { paramStorageKey } from "./ParamOptions/storageKey";
 
 import { createStorage, hashArray } from "./storage-utils";
 
 export function createPersistanceMiddleware(options: ThemeConfig["api"]) {
   const persistanceMiddleware: Middleware<{}, RootState, AppDispatch> =
-    (storeAPI) =>
-    (next) =>
-    (action: ReturnType<typeof setAuthData | typeof setSelectedAuth> | any) => {
+    (storeAPI) => (next) => (action) => {
       const result = next(action);
 
       const state = storeAPI.getState();
 
       const storage = createStorage("sessionStorage");
+      if (action.type === setParam.type) {
+        const { value, name } = action.payload;
+        storage.setItem(
+          paramStorageKey(action.payload.in, name),
+          JSON.stringify(value)
+        );
+      }
 
       if (action.type === setAuthData.type) {
         for (const [key, value] of Object.entries(state.auth.data)) {

@@ -16,6 +16,9 @@ import Body from "@theme/ApiExplorer/Body";
 import buildPostmanRequest from "@theme/ApiExplorer/buildPostmanRequest";
 import ContentType from "@theme/ApiExplorer/ContentType";
 import ParamOptions from "@theme/ApiExplorer/ParamOptions";
+import { createStorage } from "@theme/ApiExplorer/storage-utils";
+import { paramStorageKey } from "@theme/ApiExplorer/ParamOptions/storageKey";
+
 import {
   setResponse,
   setCode,
@@ -87,10 +90,20 @@ function Request({ item }: { item: ApiItem }) {
     cookie: [] as ParameterObject[],
   };
 
+  const storage = createStorage("sessionStorage");
+
   item.parameters?.forEach(
     (param: { in: "path" | "query" | "header" | "cookie" }) => {
       const paramType = param.in;
       const paramsArray: ParameterObject[] = paramsObject[paramType];
+      try {
+        const persisted =
+          storage.getItem(paramStorageKey(paramType, param.name)) ?? undefined;
+        if (persisted) {
+          param.value = JSON.parse(persisted);
+        }
+      } catch(e) { console.error(e); }
+
       paramsArray.push(param as ParameterObject);
     }
   );
