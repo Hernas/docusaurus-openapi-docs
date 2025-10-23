@@ -11,7 +11,7 @@ import * as sdk from "postman-collection";
 function fetchWithtimeout(
   url: string,
   options: RequestInit,
-  timeout = 5000
+  timeout = 40000
 ): any {
   return Promise.race([
     fetch(url, options),
